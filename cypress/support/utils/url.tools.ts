@@ -7,7 +7,7 @@
 export class UrlTools {
     
     /**
-     * Check
+     * Check if the current URL includes the given path
      *
      * @static
      * @param {string} path
