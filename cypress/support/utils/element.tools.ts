@@ -19,6 +19,31 @@ export class ElementTools {
   }
 
   /**
+   * Gets all children of an element
+   *
+   * @static
+   * @param {string} id
+   * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
+   * @memberof ElementTools
+   */
+  public static getAllElementsChildren(id: string): Cypress.Chainable<JQuery<HTMLElement>> {
+    return this.getElementById(id).children();
+  }
+
+  /**
+   * Gets a child of an element
+   *
+   * @static
+   * @param {string} id
+   * @param {number} index
+   * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
+   * @memberof ElementTools
+   */
+  public static getElementChild(id: string, index: number): Cypress.Chainable<JQuery<HTMLElement>> {
+    return this.getElementById(id).children().eq(index);
+  }
+
+  /**
    * Counts the children of an element
    *
    * @static

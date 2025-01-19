@@ -24,7 +24,7 @@ export class DefaultPage {
    * @static
    * @memberof DefaultPage
    */
-  public static navigatoToHome() {
+  public static goToHome() {
     ButtonTools.clickButtonById(this.ID_BUTTON_HOME);
   }
 
@@ -34,7 +34,7 @@ export class DefaultPage {
    * @static
    * @memberof DefaultPage
    */
-  public static navigatoToCart() {
+  public static goToCart() {
     ButtonTools.clickButtonById(this.ID_BUTTON_CART);
     cy.url().should("include", "/cart");
   }

@@ -5,11 +5,17 @@
 */
 
 /*
-* Whit this before each, we are going to the home page before each test
-* By this way, we are sure that all tests are starting from the same point
-* We can use it to login, navigate to a specific page, etc.
+* It works with imports
 */
-beforeEach(() => {
-    cy.visit('/');
-    cy.url().should('include', '/');
-  });
+import './commands';
+
+// You can use it with before and after hooks too, useful for setting up the environment and datas before running the tests
+
+/*
+* By this way, after all tests, the user will be logged out
+* I advise you to avoid using before hooks for login,
+* because we generally prefer to keep the possibility to choose the account we will use for testing
+*/
+afterEach(() => {
+    cy.logout();
+});
