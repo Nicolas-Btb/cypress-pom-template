@@ -10,7 +10,7 @@ export class ElementTools {
    * Gets an element by its id with data-cy
    *
    * @static
-   * @param {string} id
+   * @param {string} id - The ID of the parent element
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
@@ -22,7 +22,7 @@ export class ElementTools {
    * Gets all children of an element
    *
    * @static
-   * @param {string} id
+   * @param {string} id - The ID of the parent element
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
@@ -31,28 +31,29 @@ export class ElementTools {
   }
 
   /**
-   * Gets a child of an element
-   *
-   * @static
-   * @param {string} id
-   * @param {number} index
-   * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
-   * @memberof ElementTools
-   */
-  public static getElementChild(id: string, index: number): Cypress.Chainable<JQuery<HTMLElement>> {
-    return this.getElementById(id).children().eq(index);
-  }
+ * Gets a specific child element of a parent by its index position
+ *
+ * @static
+ * @param {string} id - The ID of the parent element
+ * @param {number} childIndex - The zero-based index of the child to retrieve
+ * @return {*} 
+ * @memberof ElementTools
+ */
+public static getChildByIndex(id: string, childIndex: number): Cypress.Chainable<JQuery<HTMLElement>> {
+  return this.getElementById(id).children().eq(childIndex);
+}
+
 
   /**
    * Counts the children of an element
    *
    * @static
-   * @param {string} id
+   * @param {string} id - The ID of the parent element
    * @param {number} expectedCount
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
-  public static getChildrenCount(id: string, expectedCount: number): Cypress.Chainable<JQuery<HTMLElement>> {
+  public static shouldMatchChildrenCount(id: string, expectedCount: number): Cypress.Chainable<JQuery<HTMLElement>> {
     return this.getElementById(id).children().should("have.length", expectedCount);
   }
 
@@ -60,7 +61,7 @@ export class ElementTools {
    * Gets the parent of an element
    *
    * @static
-   * @param {string} id
+   * @param {string} id - The ID of the parent element
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
@@ -72,7 +73,7 @@ export class ElementTools {
    * Gets the siblings of an element
    *
    * @static
-   * @param {string} id
+   * @param {string} id - The ID of the parent element
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
@@ -84,25 +85,25 @@ export class ElementTools {
    * Gets an element by its attribute
    *
    * @static
-   * @param {string} attribute
-   * @param {string} value
+   * @param {string} attributeName
+   * @param {string} attributeValue
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
-  public static getElementByAttribute(attribute: string, value: string): Cypress.Chainable<JQuery<HTMLElement>> {
-    return cy.get(`[${attribute}="${value}"]`);
+  public static getElementByAttribute(attributeName: string, attributeValue: string): Cypress.Chainable<JQuery<HTMLElement>> {
+    return cy.get(`[${attributeName}="${attributeValue}"]`);
   }
 
   /**
    * Gets an element by its css selector
    *
    * @static
-   * @param {string} selector
-   * @param {string} value
+   * @param {string} selectorName
+   * @param {string} selectorValue
    * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
    * @memberof ElementTools
    */
-  public static getElementBySelector(selector: string, value: string): Cypress.Chainable<JQuery<HTMLElement>> {
-    return cy.contains(selector, value);
+  public static getElementBySelector(selectorName: string, selectorValue: string): Cypress.Chainable<JQuery<HTMLElement>> {
+    return cy.contains(selectorName, selectorValue);
   }
 }

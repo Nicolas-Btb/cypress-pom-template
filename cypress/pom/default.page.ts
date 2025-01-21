@@ -11,12 +11,12 @@ import { ElementTools } from "../support/utils/element.tools";
  * @class DefaultPage
  */
 export class DefaultPage {
-  
+
   private static readonly ID_BUTTON_HOME = "module_nav_button_home";
   private static readonly ID_BUTTON_CART = "module_nav_button_cart";
   private static readonly ID_INPUT_SEARCH = "module_search_input_search";
-  private static readonly ID_DROPDOWN_LIST = "module_search_dropdown-list";
-  private static readonly ID_DROPDOWN_LINK = "module_search_dropdown-link-";
+  private static readonly ID_DROPDOWN_LIST = "module_search_dropdown_items-list";
+  private static readonly ID_DROPDOWN_LINK = "module_search_dropdown_item-link";
 
   /**
    * Navigates to the home page
@@ -51,7 +51,7 @@ export class DefaultPage {
   }
 
   public static clickOnSearchedProductByProductId(Index: number) {
-    ClickTools.clickById(this.ID_DROPDOWN_LINK + Index);
+    ClickTools.clickById(this.ID_DROPDOWN_LINK + '-' + Index);
   }
 
   //#region example if you don't have data-cy on the elements
@@ -74,7 +74,7 @@ export class DefaultPage {
    * @param {number} expectedCount
    * @memberof DefaultPage
    */
-  public static countSearchResults(expectedCount: number) {     
-      ElementTools.getChildrenCount(this.ID_DROPDOWN_LIST, expectedCount);
+  public static countSearchResults(expectedCount: number) {
+    ElementTools.shouldMatchChildrenCount(this.ID_DROPDOWN_LIST, expectedCount);
   }
 }
