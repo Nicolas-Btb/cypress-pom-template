@@ -12,27 +12,25 @@ describe('Checkout Process', () => {
         HomePage.chooseProducts(5, 2);
         DefaultPage.goToCart();
         
-        //#region complete for training
+        //TODO complete for training
         //CartPage.checkTotalPrice(xxx,xx€);
         //DefaultPage.goToHome();
         //HomePage.chooseProducts(2, 3);
         //DefaultPage.goToCart();
         //CartPage.removeProducts(y,y);
-        //CartPage.checkTotalPrice(xxx,xx€);
-        //#endregion       
+        //CartPage.checkTotalPrice(xxx,xx€); 
         
     });
 
     it('should consult a product and add it to the cart', () => {
 
-        //#region complete for training
+        //TODO complete for training
         //HomePage.consultProduct(2);
         //UrlTools.checkUrlInclude('product/2');
         //ProductPage.checkProductInformation(aaa,aaa,aaa);
         //ProductPage.addProductToCart(4);
         //DefaultPage.goToCart();
         //CartPage.checkTotalPrice(xxx,xx€);
-        //#endregion
 
     });
 

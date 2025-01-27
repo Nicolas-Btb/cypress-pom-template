@@ -39,9 +39,9 @@ export class ElementTools {
  * @return {*} 
  * @memberof ElementTools
  */
-public static getChildByIndex(id: string, childIndex: number): Cypress.Chainable<JQuery<HTMLElement>> {
-  return this.getElementById(id).children().eq(childIndex);
-}
+  public static getChildByIndex(id: string, childIndex: number): Cypress.Chainable<JQuery<HTMLElement>> {
+    return this.getElementById(id).children().eq(childIndex);
+  }
 
 
   /**
@@ -95,13 +95,25 @@ public static getChildByIndex(id: string, childIndex: number): Cypress.Chainable
   }
 
   /**
-   * Gets an element by its css selector
+   * Gets an element by its CSS selector
    *
    * @static
    * @param {string} selectorName
    * @param {string} selectorValue
-   * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
-   * @memberof ElementTools
+   * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>} 
+   *
+   * @example
+   * // Example 1: Find an element with a class and a specific value
+   * ElementTools.getElementBySelector('.class', 'pa-2');
+   *
+   * // Example 2: Find an element with an ID
+   * ElementTools.getElementBySelector('#my-id', 'some-value');
+   *
+   * // Example 3: Find an element by tag
+   * ElementTools.getElementBySelector('button', 'Submit');
+   *
+   * // Note: If multiple elements match the criteria, only the first match will be returned.
+   * // If no element is found, the test will fail.
    */
   public static getElementBySelector(selectorName: string, selectorValue: string): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.contains(selectorName, selectorValue);
