@@ -82,16 +82,26 @@ export class ElementTools {
   }
 
   /**
-   * Gets an element by its attribute
-   *
-   * @static
-   * @param {string} attributeName
-   * @param {string} attributeValue
-   * @return {*}  {Cypress.Chainable<JQuery<HTMLElement>>}
-   * @memberof ElementTools
-   */
-  public static getElementByAttribute(attributeName: string, attributeValue: string): Cypress.Chainable<JQuery<HTMLElement>> {
-    return cy.get(`[${attributeName}="${attributeValue}"]`);
+ * Gets an element by its attribute
+ *
+ * @static
+ * @param {string} attributeName
+ * @param {string} attributeValue
+ * @param {number} [index] (optional) The index of the element to return
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ * @memberof ElementTools
+ * @example
+ * getElementByAttribute('class', 'card-title') will return all elements with the class 'card-title'
+ * getElementByAttribute('class', 'card-title', 0) will return only the first element with the class 'card-title'
+ */
+  public static getElementByAttribute(attributeName: string, attributeValue: string, index?: number): Cypress.Chainable<JQuery<HTMLElement>> {
+    const elements = cy.get(`[${attributeName}="${attributeValue}"]`);
+
+    if (index !== undefined) {
+      return elements.eq(index);
+    }
+
+    return elements;
   }
 
   /**
@@ -105,11 +115,9 @@ export class ElementTools {
    * @example
    * // Example 1: Find an element with a class and a specific value
    * ElementTools.getElementBySelector('.class', 'pa-2');
+   * ElementTools.getElementBySelector('.btn', 'Login');
    *
-   * // Example 2: Find an element with an ID
-   * ElementTools.getElementBySelector('#my-id', 'some-value');
-   *
-   * // Example 3: Find an element by tag
+   * // Example 2: Find an element by tag
    * ElementTools.getElementBySelector('button', 'Submit');
    *
    * // Note: If multiple elements match the criteria, only the first match will be returned.
