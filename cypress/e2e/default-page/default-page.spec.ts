@@ -8,7 +8,7 @@ describe('Default Page testing', () => {
     });
     
     
-    it.skip('should search for a product', () => {
+    it('should search for a product', () => {
         DefaultPage.searchForProduct('Mens');
         DefaultPage.countSearchResults(4);
         
