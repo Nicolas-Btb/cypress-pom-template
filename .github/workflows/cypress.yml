@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'cypress/**'  # Si tu modifies les tests, ça se lance
+      - '.github/workflows/cypress.yml'  # Si tu modifies le workflow, ça se lance
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   cypress-run:
