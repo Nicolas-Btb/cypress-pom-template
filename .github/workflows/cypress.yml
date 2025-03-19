@@ -1,0 +1,56 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2] # 2 instances en parallèle
+
+    steps:
+      - name: Checkout du repo des tests
+        uses: actions/checkout@v4
+
+      - name: Cloner le repo du front
+        run: git clone https://github.com/Nicolas-Btb/vue-cart-qa-testing.git app
+
+      - name: Installer les dépendances du front
+        run: |
+          cd app
+          npm install
+
+      - name: Lancer le serveur front en arrière-plan
+        run: |
+          cd app
+          npm run dev &
+          sleep 10 # Attendre que le serveur démarre
+
+      - name: Vérifier que le serveur est bien lancé
+        run: curl -I http://localhost:5173 || exit 1
+
+      - name: Installer les dépendances des tests
+        run: npm install
+
+      - name: Exécuter Cypress en parallèle
+        uses: cypress-io/github-action@v6
+        with:
+          start: ""
+          wait-on: "http://localhost:5173"
+          record: true
+          parallel: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Arrêter le serveur après les tests
+        run: kill $(lsof -t -i:5173) || true
