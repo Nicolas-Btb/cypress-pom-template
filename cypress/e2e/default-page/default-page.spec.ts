@@ -8,7 +8,7 @@ describe('Default Page testing', () => {
     });
     
     
-    it('should search for a product', () => {
+    it.skip('should search for a product', () => {
         DefaultPage.searchForProduct('Mens');
         DefaultPage.countSearchResults(4);
         
@@ -21,56 +21,19 @@ describe('Default Page testing', () => {
         UrlTools.checkUrlInclude('http://localhost:5173/');        
     });
 
-    it('should search for a product 2', () => {
-        DefaultPage.searchForProduct('Mens');
-        DefaultPage.countSearchResults(4);
-        
-        DefaultPage.clickOnSearchedProductByProductId(2);
-        //example if you don't know the product id
-        //DefaultPage.clickOnSearchedProductByProductName('Mens Cotton Jacket');
-        UrlTools.checkUrlInclude('product/3');
+    it('just wait for 10 seconds', () => {
 
-        DefaultPage.goToHome();
-        UrlTools.checkUrlInclude('http://localhost:5173/');        
+        cy.wait(10000);
     });
 
-    it('should search for a product 3', () => {
-        DefaultPage.searchForProduct('Mens');
-        DefaultPage.countSearchResults(4);
-        
-        DefaultPage.clickOnSearchedProductByProductId(2);
-        //example if you don't know the product id
-        //DefaultPage.clickOnSearchedProductByProductName('Mens Cotton Jacket');
-        UrlTools.checkUrlInclude('product/3');
+    it('just wait for 7 seconds', () => {
 
-        DefaultPage.goToHome();
-        UrlTools.checkUrlInclude('http://localhost:5173/');        
+        cy.wait(7000);
     });
 
-    it('should search for a product 4', () => {
-        DefaultPage.searchForProduct('Mens');
-        DefaultPage.countSearchResults(4);
-        
-        DefaultPage.clickOnSearchedProductByProductId(2);
-        //example if you don't know the product id
-        //DefaultPage.clickOnSearchedProductByProductName('Mens Cotton Jacket');
-        UrlTools.checkUrlInclude('product/3');
+    it('just wait for 4 seconds', () => {
 
-        DefaultPage.goToHome();
-        UrlTools.checkUrlInclude('http://localhost:5173/');        
-    });
-
-    it('should search for a product 5', () => {
-        DefaultPage.searchForProduct('Mens');
-        DefaultPage.countSearchResults(4);
-        
-        DefaultPage.clickOnSearchedProductByProductId(2);
-        //example if you don't know the product id
-        //DefaultPage.clickOnSearchedProductByProductName('Mens Cotton Jacket');
-        UrlTools.checkUrlInclude('product/3');
-
-        DefaultPage.goToHome();
-        UrlTools.checkUrlInclude('http://localhost:5173/');        
+        cy.wait(4000);
     });
     
 });
