@@ -37,6 +37,7 @@ describe('Checkout Process', () => {
     it('just wait for 5 seconds', () => {
 
         cy.wait(5000);
+        
     });
 
     it('just wait for 3 seconds', () => {
