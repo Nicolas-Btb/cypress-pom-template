@@ -24,6 +24,7 @@ describe('Default Page testing', () => {
     it('just wait for 10 seconds', () => {
 
         cy.wait(10000);
+        cy.url().should('include', 'failed');
     });
 
     it('just wait for 7 seconds', () => {

@@ -14,6 +14,7 @@ describe('Fake Page 2 testing', () => {
     it('just wait for 3 seconds', () => {
 
         cy.wait(3000);
+        cy.url().should('include', 'failed');
     });
 
     it('just wait for 2 seconds', () => {
