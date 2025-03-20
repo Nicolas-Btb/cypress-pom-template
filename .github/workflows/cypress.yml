@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2, 3, 4] # 4 instances en parallèle
+        containers: [1, 2] # 4 instances en parallèle
 
     steps:
       - name: Checkout du repo des tests
